@@ -1,0 +1,13 @@
+---
+- name: configure VLANs
+  hosts: arista
+  gather_facts: false
+  vars_files: 
+    - vars/network-data.yml
+
+  tasks:
+
+  - name: use vlans resource module
+    arista.eos.vlans:
+      state: deleted
+      config: "{{ vlans }}"
