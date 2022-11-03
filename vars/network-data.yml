@@ -1,6 +1,6 @@
 vlans_arista:  
   - name: desktops
-    vlan_id: 10
+    vlan_id: 100000
   - name: servers
     vlan_id: 20
   - name: printers
