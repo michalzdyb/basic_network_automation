@@ -1,6 +1,6 @@
 ---
 - name: configure VLANs
-  hosts: routers
+  hosts: juniper arista
   gather_facts: false
   vars_files: 
     - vars/network-data.yml

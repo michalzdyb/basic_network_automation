@@ -1,6 +1,6 @@
 ---
 - name: configure SNMP
-  hosts: routers
+  hosts: cisco arista
   gather_facts: false
   vars_files: 
     - vars/network-data.yml
