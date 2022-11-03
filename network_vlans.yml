@@ -1,13 +1,20 @@
 ---
 - name: configure VLANs
-  hosts: arista
+  hosts: routers
   gather_facts: false
   vars_files: 
     - vars/network-data.yml
 
   tasks:
 
-  - name: use vlans resource module
+  - name: ensure vlans state on Juniper routers
+    junipernetworks.junos.vlans:
+      state: deleted
+      config: "{{ vlans }}"
+    when: ansible_network_os == 'junos'
+
+  - name: ensure vlans state on Arista routers
     arista.eos.vlans:
       state: deleted
       config: "{{ vlans }}"
+    when: ansible_network_os == 'eos'
