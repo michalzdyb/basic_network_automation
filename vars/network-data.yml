@@ -1,9 +1,30 @@
-vlans:  
+vlans_arista:  
   - name: desktops
-    vlan_id: 20
+    vlan_id: 10
   - name: servers
-    vlan_id: 30
+    vlan_id: 20
   - name: printers
-    vlan_id: 40
-  - name: DMZ
-    vlan_id: 50
+    vlan_id: 30
+
+vlans_juniper:  
+  - name: desktops
+    vlan_id: 100
+  - name: servers
+    vlan_id: 200
+  - name: printers
+    vlan_id: 300
+
+snmp_communities:
+  - acl_v4: test_acl
+    name: test_community
+    rw: true
+
+snmp_host_config_cisco:
+  - host: 10.10.10.1
+    community_string: test_community
+    version: 2c
+
+snmp_host_config_arista:
+  - host: 10.10.10.1
+    user: test_community
+    version: 2c

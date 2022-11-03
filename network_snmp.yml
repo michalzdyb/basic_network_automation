@@ -1,0 +1,27 @@
+---
+- name: configure SNMP
+  hosts: routers
+  gather_facts: false
+  vars_files: 
+    - vars/network-data.yml
+
+  tasks:
+
+    - name: ensure SNMP state on Cisco routers
+      cisco.ios.snmp_server:
+        state: replaced        
+        config:            
+          location: 'London'
+          communities: "{{ snmp_communities }}"
+          hosts: "{{ snmp_host_config_cisco }}"
+
+      when: ansible_network_os == 'ios'        
+
+    - name: ensure SNMP state Arista routers
+      arista.eos.snmp_server:
+        state: replaced        
+        config:            
+          location: 'London'
+          communities: "{{ snmp_communities }}"
+          hosts: "{{ snmp_host_config_arista }}"
+      when: ansible_network_os == 'eos' 
