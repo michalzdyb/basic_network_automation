@@ -9,7 +9,7 @@
 
     - name: ensure SNMP state on Cisco routers
       cisco.ios.snmp_server:
-        state: merged       
+        state: deleted       
         config:            
           location: 'London'
           communities: "{{ snmp_communities }}"
@@ -19,7 +19,7 @@
 
     - name: ensure SNMP state Arista routers
       arista.eos.snmp_server:
-        state: merged       
+        state: deleted      
         config:            
           location: 'London'
           communities: "{{ snmp_communities }}"

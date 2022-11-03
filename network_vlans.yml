@@ -9,12 +9,12 @@
 
   - name: ensure vlans state on Juniper routers
     junipernetworks.junos.vlans:
-      state: merged
+      state: deleted
       config: "{{ vlans_juniper }}"
     when: ansible_network_os == 'junos'
 
   - name: ensure vlans state on Arista routers
     arista.eos.vlans:
-      state: merged
+      state: deleted
       config: "{{ vlans_arista }}"
     when: ansible_network_os == 'eos'
